@@ -1,30 +1,33 @@
 const SUPABASE_URL = "https://vdvcnephezrprclpzokl.supabase.co";
 const SUPABASE_KEY = "sb_publishable_abAOT-XjCiQTtqMJclU97Q_FX1uYUJF";
-const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+let client;
 
-const taskForm = document.getElementById("task-form");
-const taskInput = document.getElementById("task-input");
-const taskList = document.getElementById("task-list");
+document.addEventListener("DOMContentLoaded", function () {
+  client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-loadTasks();
+  const taskForm = document.getElementById("task-form");
+  const taskInput = document.getElementById("task-input");
 
-taskForm.addEventListener("submit", async function (e) {
-  e.preventDefault();
-  const taskText = taskInput.value.trim();
-  if (taskText === "") return;
+  taskForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const taskText = taskInput.value.trim();
+    if (taskText === "") return;
 
-  const { error } = await client
-    .from("tasks")
-    .insert([{ name: taskText }]);
+    const { error } = await client
+      .from("tasks")
+      .insert([{ name: taskText }]);
 
-  if (error) {
-    console.error("Error al crear tarea:", error);
-    alert("Error: " + error.message);
-    return;
-  }
+    if (error) {
+      console.error("Error al crear tarea:", error);
+      alert("Error: " + error.message);
+      return;
+    }
 
-  taskInput.value = "";
-  taskInput.focus();
+    taskInput.value = "";
+    taskInput.focus();
+    loadTasks();
+  });
+
   loadTasks();
 });
 
@@ -40,11 +43,13 @@ async function loadTasks() {
     return;
   }
 
+  const taskList = document.getElementById("task-list");
   taskList.innerHTML = "";
   data.forEach(task => renderTask(task));
 }
 
 function renderTask(task) {
+  const taskList = document.getElementById("task-list");
   const li = document.createElement("li");
   li.dataset.id = task.id;
   if (task.is_completed) li.classList.add("completed");
