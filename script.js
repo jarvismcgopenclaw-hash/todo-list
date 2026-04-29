@@ -1,8 +1,6 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-
 const SUPABASE_URL = "https://vdvcnephezrprclpzokl.supabase.co";
 const SUPABASE_KEY = "sb_publishable_abAOT-XjCiQTtqMJclU97Q_FX1uYUJF";
-const client = createClient(SUPABASE_URL, SUPABASE_KEY);
+const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
