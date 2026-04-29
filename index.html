@@ -3,18 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Lista de Tareas</title>
+  <title>Lista de la Compra Espacial</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Mi Lista de Tareas</h1>
-    <form id="task-form">
-      <input type="text" id="task-input" placeholder="Añadir nueva tarea..." required>
-      <button type="submit">Añadir</button>
-    </form>
-    <ul id="task-list"></ul>
-  </div>
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
+
+  <header class="hero">
+    <div class="nebula"></div>
+    <div class="hero-content">
+      <div class="logo">
+        <span class="planet">🪐</span>
+        <h1>Lista de la Compra Espacial</h1>
+        <span class="rocket">🚀</span>
+      </div>
+      <p class="tagline">Alimentos de otro mundo, organizados en otra galaxia</p>
+    </div>
+    <div class="scroll-indicator">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <p>Scroll para empezar</p>
+    </div>
+  </header>
+
+  <section class="features">
+    <h2 class="section-title">Tu Centro de Comando Galáctico</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📡</div>
+        <h3>Conexión Orbital</h3>
+        <p>Tus tareas guardadas en la nube, accesibles desde cualquier planeta</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Velocidad Luz</h3>
+        <p>Añade, completa y elimina tareas en milisegundos</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛸</div>
+        <h3>Anti-Gravedad</h3>
+        <p>Las tareas completadas flotan con estilo entre las estrellas</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="app-section">
+    <div class="app-container">
+      <div class="app-header">
+        <h2>Panel de Control</h2>
+        <div class="status-bar">
+          <span class="status-dot"></span>
+          <span>Conexión Supabase: Activa</span>
+        </div>
+      </div>
+      <form id="task-form">
+        <div class="input-wrapper">
+          <input type="text" id="task-input" placeholder="Añadir alimento a la lista..." required>
+          <button type="submit">
+            <span class="btn-text">Enviar</span>
+            <span class="btn-icon">🚀</span>
+          </button>
+        </div>
+      </form>
+      <ul id="task-list"></ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Hecho con ❤️ en la Estación Espacial Internacional</p>
+    <p class="tech-stack">HTML • CSS • JavaScript • Supabase</p>
+  </footer>
+
   <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
   <script src="script.js"></script>
 </body>
