@@ -1,6 +1,6 @@
 const SUPABASE_URL = "https://vdvcnephezrprclpzokl.supabase.co";
 const SUPABASE_KEY = "sb_publishable_abAOT-XjCiQTtqMJclU97Q_FX1uYUJF";
-const supabase = supabaseJs.createClient(SUPABASE_URL, SUPABASE_KEY);
+const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
@@ -13,7 +13,7 @@ taskForm.addEventListener("submit", async function (e) {
   const taskText = taskInput.value.trim();
   if (taskText === "") return;
 
-  const { error } = await supabase
+  const { error } = await client
     .from("tasks")
     .insert([{ name: taskText }]);
 
@@ -28,7 +28,7 @@ taskForm.addEventListener("submit", async function (e) {
 });
 
 async function loadTasks() {
-  const { data, error } = await supabase
+  const { data, error } = await client
     .from("tasks")
     .select("*")
     .order("created_at", { ascending: true });
@@ -50,7 +50,7 @@ function renderTask(task) {
   const span = document.createElement("span");
   span.textContent = task.name;
   span.addEventListener("click", async () => {
-    await supabase
+    await client
       .from("tasks")
       .update({ is_completed: !task.is_completed })
       .eq("id", task.id);
@@ -61,7 +61,7 @@ function renderTask(task) {
   deleteBtn.textContent = "Eliminar";
   deleteBtn.classList.add("delete-btn");
   deleteBtn.addEventListener("click", async () => {
-    await supabase
+    await client
       .from("tasks")
       .delete()
       .eq("id", task.id);
