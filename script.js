@@ -1,5 +1,5 @@
-const SUPABASE_URL = "https://vdvcnephezrprclpzokl.supabase.co";
-const SUPABASE_KEY = "sb_publishable_abAOT-XjCiQTtqMJclU97Q_FX1uYUJF";
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_KEY;
 let client;
 
 document.addEventListener("DOMContentLoaded", function () {
